@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author raahp
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({Backgrounds.Background_PrincipalTest.class, Backgrounds.Background_FuncoesTest.class})
+@Suite.SuiteClasses({Backgrounds.Background_FuncoesTest.class, Backgrounds.Background_PrincipalTest.class})
 public class BackgroundsSuite {
 
     @BeforeClass

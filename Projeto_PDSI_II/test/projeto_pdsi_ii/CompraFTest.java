@@ -141,6 +141,18 @@ public class CompraFTest {
     }
 
     /**
+     * Test of Registra method, of class CompraF.
+     */
+    @Test
+    public void testRegistra() throws Exception {
+        System.out.println("Registra");
+        CompraF instance = new CompraF();
+        instance.Registra();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
      * Test of main method, of class CompraF.
      */
     @Test

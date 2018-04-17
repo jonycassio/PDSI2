@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projeto_pdsi_ii;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,8 +16,8 @@ import org.junit.runners.Suite;
  * @author raahp
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({projeto_pdsi_ii.Borda_RedondaTest.class, projeto_pdsi_ii.CompraTest.class, projeto_pdsi_ii.CompraFTest.class})
-public class Projeto_pdsi_iiSuite {
+@Suite.SuiteClasses({Backgrounds.BackgroundsSuite.class, Banco_de_Dados.Banco_de_DadosSuite.class, Imagens.ImagensSuite.class, projeto_pdsi_ii.Projeto_pdsi_iiSuite.class})
+public class RootSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
