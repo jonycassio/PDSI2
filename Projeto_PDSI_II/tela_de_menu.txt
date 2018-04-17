@@ -1,0 +1,133 @@
+Font fonte = new Font("SansSerif", Font.BOLD, 15);
+ 
+        aRadioButton.setBounds(10, 10, 110, 30);
+        add(aRadioButton);
+        aRadioButton.addActionListener(this);
+
+        bRadioButton.setBounds(120, 10, 70, 30);
+        add(bRadioButton);
+        bRadioButton.addActionListener(this);
+        
+        cRadioButton.setBounds(190, 10, 100, 30);
+        add(cRadioButton);
+        cRadioButton.addActionListener(this);
+       
+        group.add(aRadioButton);
+        group.add(bRadioButton);
+        group.add(cRadioButton);
+        
+        
+        JLabel Tipo = new JLabel("Tipo de Produto: ");
+        Tipo.setFont(fonte);
+        Pega_Tipo.setBounds(120, 80, 130, 30);
+        Tipo.setBounds(10, 75, 130, 40);
+        add(Pega_Tipo);
+        add(Tipo);       
+ 
+        ArrayList<String> tipo = new ArrayList<>();
+           
+            pegalanche(tipo);
+            
+            Pega_Tipo.removeAllItems();
+            
+            Pega_Tipo.addItem("");
+            
+            for (int i = 0; i < tipo.size(); i++) {
+
+                Pega_Tipo.addItem(tipo.get(i));
+
+            }
+          
+    
+        JLabel Bebida = new JLabel("Bebida: ");
+        Bebida.setFont(fonte);
+        Pega_BebidaP.setBounds(120, 165, 130, 30);
+        Bebida.setBounds(10, 160, 130, 40);
+        add(Bebida);
+        add(Pega_BebidaR);
+        add(Pega_BebidaS);
+        add(Pega_BebidaM);
+        add(Pega_BebidaP);
+            
+       
+        JLabel Quantidade = new JLabel("Quantidade:");
+        Quantidade.setFont(fonte);
+        Pega_Quantidade.setBounds(120, 125, 70, 30);
+        Quantidade.setBounds(10, 120, 130, 40);
+        add(Pega_Quantidade);
+        add(Quantidade);
+        
+        
+        JLabel Quantidade2 = new JLabel("Quantidade:");
+        Quantidade2.setFont(fonte);
+        Pega_Quantidade2.setBounds(120, 205, 70, 30);
+        Quantidade2.setBounds(10, 200, 130, 40);
+        add(Pega_Quantidade2);
+        add(Quantidade2);
+        
+        
+        JLabel N = new JLabel("PEDIDOS");
+        N.setFont(fonte);
+        Mostra_Nome.setBounds(150, 300, 230, 160);
+        Mostra_Nome.setFont(fonte);
+        Mostra_Nome.setEditable(false);
+        N.setBounds(150, 45, 130, 40);
+        add(Mostra_Nome);
+        add(N);
+        
+        
+        JLabel P = new JLabel("PREÇO");
+        P.setFont(fonte);
+        Mostra_Preco.setBounds(380, 300, 230, 160);
+        Mostra_Preco.setEditable(false);
+        P.setBounds(380, 45, 130, 40);
+        add(Mostra_Preco);
+        add(P);
+        
+        
+        JLabel Q = new JLabel("QUANTIDADE");
+        Q.setFont(fonte);
+        Mostra_Quantidade.setBounds(610, 300, 230, 160);
+        Mostra_Quantidade.setEditable(false);
+        Q.setBounds(610, 45, 130, 40);
+        add(Mostra_Quantidade);
+        add(Q);
+        
+        
+        JLabel T = new JLabel("TOTAL:");
+        T.setFont(fonte);
+        Mostra_Total.setBounds(850, 300, 70, 30);
+        Mostra_Total.setEditable(false);
+        T.setBounds(850, 45, 130, 40);
+        add(Mostra_Total);
+        add(T);
+        
+        
+        Adicionar.setBorder(new Borda_Redonda(7));
+        Adicionar.setBounds(50, 280, 130, 40);
+        Adicionar.addActionListener(this);
+        add(Adicionar);
+
+        
+        Registrar_Compra.setBorder(new Borda_Redonda(7));
+        Registrar_Compra.setBounds(520, 550, 200, 40);
+        Registrar_Compra.addActionListener(this);
+        add(Registrar_Compra);
+
+        
+        Cancelar_Compra.setBorder(new Borda_Redonda(7));
+        Cancelar_Compra.setBounds(820, 550, 200, 40);
+        Cancelar_Compra.addActionListener(this);
+        add(Cancelar_Compra);
+
+        
+        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        add(new Background_Funcoes());
+        setBackground(Color.black);
+        setResizable(false);
+        setTitle("..:FastZooom:..");
+        setSize(1100, 700);
+        setLocationRelativeTo(null);
+        setVisible(true);
