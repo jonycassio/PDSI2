@@ -5,6 +5,7 @@
  */
 package projeto_pdsi_ii;
 
+import Botoes.Borda_Redonda;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Insets;

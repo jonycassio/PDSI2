@@ -1,7 +1,9 @@
 package projeto_pdsi_ii;
 
+
 import Imagens.Compra;
 import Backgrounds.Background_Funcoes;
+import Botoes.Borda_Redonda;
 import Banco_de_Dados.DAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -37,23 +39,17 @@ import javax.swing.JRadioButton;
 
 
 
-
-
-
-
-
-
 public class CompraF extends JFrame implements ActionListener {
 
     JButton Registrar_Compra = new JButton("Registrar Pedido");
     JButton Cancelar_Compra = new JButton("Cancelar Pedido");
     JButton Adicionar = new JButton("Adicionar Pedido");
 
-    ArrayList<String> QUANTIDADE = new ArrayList<>();
-    ArrayList<String> PRECO = new ArrayList<>();
-    ArrayList<String> NOME = new ArrayList<>();
-    ArrayList<String> QNT = new ArrayList<>();
-    ArrayList<String> ID = new ArrayList<>();
+    
+    ArrayList<Registro> RegistroList = new ArrayList<Registro>();
+    ArrayList<Lanche> LancheList = new ArrayList<Lanche>();
+    ArrayList<Bebida> BebidaList = new ArrayList<Bebida>();
+    
     
     ArrayList<String> Refrigerante = new ArrayList<>();
     ArrayList<String> Suco = new ArrayList<>();
@@ -65,31 +61,34 @@ public class CompraF extends JFrame implements ActionListener {
     JTextField Mostra_Total = new JTextField();
     JTextField Pega_Nome = new JTextField();
 
+    
     JTextArea Mostra_Quantidade = new JTextArea();
     JTextArea Mostra_Modelo = new JTextArea();
     JTextArea Mostra_Marca = new JTextArea();
     JTextArea Mostra_Preco = new JTextArea();
     JTextArea Mostra_Nome = new JTextArea();
 
+    
     JComboBox<String> Pega_Tipo = new JComboBox<>();
     JComboBox<String> Pega_BebidaP = new JComboBox<>();
     JComboBox<String> Pega_BebidaR = new JComboBox<>();
     JComboBox<String> Pega_BebidaS = new JComboBox<>();
     JComboBox<String> Pega_BebidaM = new JComboBox<>();
 
+    
     JRadioButton aRadioButton = new JRadioButton("Refrigerantes");
     JRadioButton bRadioButton = new JRadioButton("Sucos");
     JRadioButton cRadioButton = new JRadioButton("milkshake");
 
+    
     ButtonGroup group = new ButtonGroup();
 
+    
     DAO c = new DAO();
 
     float total = 0;
-
-    int cont = 0;
-
-    int conta = 0;
+    
+    int indexLanhe = 0, indexBebida = 0, tipo = 0;
 
     
     
@@ -251,7 +250,6 @@ public class CompraF extends JFrame implements ActionListener {
     }
     
     
-    
     public void Posiciona_BebidaR() {
 
         Pega_BebidaR.setBounds(690, 155, 130, 30);
@@ -284,7 +282,7 @@ public class CompraF extends JFrame implements ActionListener {
         
         if(e.getSource() == aRadioButton){
             
-            conta = 1;
+            tipo = 1;
             Posiciona_BebidaR();
             Pega_BebidaP.setVisible(false);
             Pega_BebidaR.setVisible(true);
@@ -311,7 +309,7 @@ public class CompraF extends JFrame implements ActionListener {
         
         if (e.getSource() == bRadioButton) {
             
-            conta = 2;    
+            tipo = 2;    
             Posiciona_BebidaS();
             
             Pega_BebidaP.setVisible(false);
@@ -339,7 +337,7 @@ public class CompraF extends JFrame implements ActionListener {
         
         if (e.getSource()==cRadioButton) {
             
-            conta = 3;
+            tipo = 3;
             Posiciona_BebidaM();           
             
             Pega_BebidaP.setVisible(false);
@@ -374,14 +372,29 @@ public class CompraF extends JFrame implements ActionListener {
             } else {
                 
             
-                System.out.println("o que tem em conta: "+conta);
+                Lanche lanche = new Lanche();
+                Bebida bebida = new Bebida();
+                
+                
+                lanche.setPedido((String) Pega_Tipo.getSelectedItem());
+                lanche.setQuantidade(Integer.parseInt(Pega_Quantidade.getText()));
+ 
+                
+                if(tipo == 1) bebida.setBebida((String) Pega_BebidaR.getSelectedItem());
+                if(tipo == 2) bebida.setBebida((String) Pega_BebidaS.getSelectedItem());
+                if(tipo == 3) bebida.setBebida((String) Pega_BebidaM.getSelectedItem()); 
+                bebida.setQuantidade(Integer.parseInt(Pega_Quantidade2.getText()));
+                
+                
+                LancheList.add(lanche);
+                BebidaList.add(bebida);
+                
+                
+                pegaDadosPedido();
+                pegaDadosBebida();
+                MostraPedidos();
 
-                pegaDadosPedido((String) Pega_Tipo.getSelectedItem());
-
-                if(conta == 1) pegaDadosBebidas((String) Pega_BebidaR.getSelectedItem());
-                if(conta == 2) pegaDadosBebidas((String) Pega_BebidaS.getSelectedItem());
-                if(conta == 3) pegaDadosBebidas((String) Pega_BebidaM.getSelectedItem());
-
+                
                 Pega_BebidaP.setVisible(true);
                 Pega_BebidaR.setVisible(false);
                 Pega_BebidaS.setVisible(false);
@@ -474,34 +487,34 @@ public class CompraF extends JFrame implements ActionListener {
     }
     
     
-    public void pegaDadosPedido(String pedido) {
+    public void pegaDadosPedido() {
         
 
         c.conexao();
 
-                c.executaSQL("select * from lanches where Pedido = '" + pedido + "'");
+        c.executaSQL("select * from lanches where Pedido = '" + LancheList.get(indexLanhe).getPedido() + "'");
+        
+        Registro reg = new Registro();
                 
 
                 try {
 
                     c.rs.first();
 
-                    String id = c.rs.getString("ID_Pedido");
                     String nome = c.rs.getString("Pedido");
-                    String preco = c.rs.getString("Preco");
-                    //String quantidade = c.rs.getString("Quantidade");
+                    float preco = Float.parseFloat(c.rs.getString("Preco"));
+                    int qnt = LancheList.get(indexLanhe).getQuantidade();
 
-                    String qnt = Pega_Quantidade.getText();
+                    reg.setQUANTIDADE(qnt);
+                    reg.setNOME(nome);
+                    reg.setPRECO(preco);
+                    
 
-                    ID.add(id);
-                    QNT.add(qnt);
-                    NOME.add(nome);
-                    PRECO.add(preco);
-                    //QUANTIDADE.add(quantidade);
-
-                    total = total + Float.parseFloat(preco) * Integer.parseInt(qnt);
-
-                    cont++;
+                    total = total + preco * qnt;
+                    
+                    RegistroList.add(reg);
+                    
+                    indexLanhe++;
 
                     
 
@@ -519,48 +532,38 @@ public class CompraF extends JFrame implements ActionListener {
                 Mostra_Nome.setText("");
                 Mostra_Quantidade.setText("");
 
-                for (int i = 0; i < cont; i++) {
-
-                    Mostra_Quantidade.append("|    " + QNT.get(i) + "\n");
-                    Mostra_Preco.append("|   " + PRECO.get(i) + "\n");
-                    Mostra_Nome.append("    " + NOME.get(i) + "\n");
-
-                }
-        
+                
         
     }
     
     
-    public void pegaDadosBebidas(String bebida) {
-        
-        
-        System.out.println("bgfngfnfdn = "+bebida);
-        
+    public void pegaDadosBebida() {
+               
         c.conexao();
 
-        c.executaSQL("select * from bebidas where Bebida = '"+bebida+"'");
+        c.executaSQL("select * from bebidas where Bebida = '" +BebidaList.get(indexBebida).getBebida()+ "'");
+        
+        Registro reg = new Registro();
                 
 
                 try {
 
                     c.rs.first();
-
-                    String id = c.rs.getString("ID_Bebida");                    
+                    
                     String nome = c.rs.getString("Bebida");                    
-                    String preco = c.rs.getString("Preco");
-                    
-                    String qnt = Pega_Quantidade2.getText();
-                    
-                    ID.add(id);
-                    QNT.add(qnt);
-                    NOME.add(nome);
-                    PRECO.add(preco);
+                    float preco = Float.parseFloat(c.rs.getString("Preco"));
+                    int qnt = BebidaList.get(indexBebida).getQuantidade();
+  
+                    reg.setQUANTIDADE(qnt);
+                    reg.setNOME(nome);
+                    reg.setPRECO(preco);
                     
 
-                    total = total + (Float.parseFloat(preco) * Integer.parseInt(qnt));
-
-                    cont++;
-
+                    total = total + preco * qnt;
+                    
+                    RegistroList.add(reg);
+                    
+                    indexBebida++;
                     
 
                 } catch (SQLException ex) {
@@ -570,21 +573,30 @@ public class CompraF extends JFrame implements ActionListener {
                 }
                 
                 
-                Mostra_Total.setText(String.valueOf(total));
-                
+                Mostra_Total.setText(String.valueOf(total));               
                 Pega_Quantidade2.setText("");               
                 Mostra_Preco.setText("");
                 Mostra_Nome.setText("");
                 Mostra_Quantidade.setText("");
 
-                for (int i = 0; i < cont; i++) {
+                
+        
+        
+    }
+    
+    
+    public void MostraPedidos(){
+        
+        
+        
+        for (Registro r : RegistroList) {
 
-                    Mostra_Quantidade.append("|    " + QNT.get(i) + "\n");
-                    Mostra_Preco.append("|   " + PRECO.get(i) + "\n");
-                    Mostra_Nome.append("    " + NOME.get(i) + "\n");
+                    Mostra_Quantidade.append("|    " + r.getQUANTIDADE() + "\n");
+                    Mostra_Preco.append("|   " + r.getPRECO() + "\n");
+                    Mostra_Nome.append("    " + r.getNOME() + "\n");
 
                 }
-        
+          
         
     }
     
@@ -662,7 +674,7 @@ public class CompraF extends JFrame implements ActionListener {
         
         c.conexao();
 
-            if(NOME.isEmpty() ){
+            if(RegistroList.isEmpty() ){
 
                 JOptionPane.showMessageDialog(null, "Existe um ou mais campos vazios!");
 
@@ -670,7 +682,7 @@ public class CompraF extends JFrame implements ActionListener {
 
                 
                 
-                for(int i = 0; i < NOME.size(); i++){
+                for(Registro r : RegistroList){
                     
                     
                     String sql = "insert into registro (Pedidos, Preco, Data_Registrada) values (?, ?, NOW());";
@@ -680,8 +692,8 @@ public class CompraF extends JFrame implements ActionListener {
 
                     try {
 
-                            stmt.setString(1, NOME.get(i));
-                            stmt.setString(2, PRECO.get(i));
+                            stmt.setString(1, r.getNOME());
+                            stmt.setString(2, String.valueOf(r.getPRECO()));
                                          
 
                     } catch (SQLException ex) {
@@ -699,8 +711,15 @@ public class CompraF extends JFrame implements ActionListener {
                 }
                 
             }  
-                
-                JOptionPane.showMessageDialog(null, "Produto cadatrado com sucesso!");
+            
+            RegistroList.clear();
+            BebidaList.clear();
+            LancheList.clear();
+            indexBebida = 0;
+            indexLanhe = 0;
+            total = 0;
+            
+            JOptionPane.showMessageDialog(null, "Produto cadatrado com sucesso!");
 
                 
 

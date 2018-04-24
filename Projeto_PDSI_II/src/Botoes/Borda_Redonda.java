@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projeto_pdsi_ii;
+package Botoes;
 
 import java.awt.Component;
 import java.awt.Graphics;
@@ -14,12 +14,12 @@ import javax.swing.border.Border;
  *
  * @author Jonycássio Almondes
  */
-class Borda_Redonda implements Border {
+public class Borda_Redonda implements Border {
 
-    private int radius;
+    public int radius;
 
 
-    Borda_Redonda(int radius) {
+    public Borda_Redonda(int radius) {
         
         this.radius = radius;
     
