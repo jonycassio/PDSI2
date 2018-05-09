@@ -1,7 +1,6 @@
 package projeto_pdsi_ii;
 
 
-import Imagens.Compra;
 import Backgrounds.Background_Funcoes;
 import Botoes.Borda_Redonda;
 import Banco_de_Dados.DAO;
