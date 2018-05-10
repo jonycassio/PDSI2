@@ -22,7 +22,7 @@ public class Cadastro_Alimentos_Frios extends JFrame {
     
     
     JButton Voltar = new JButton("Voltar");
-    JButton Adicionar = new JButton("Cadastrar Bebida");
+    JButton Adicionar = new JButton("Cadastrar Frios");
  
 
     JTextField Pega_Nome_Fornecedor = new JTextField();
@@ -44,8 +44,8 @@ public class Cadastro_Alimentos_Frios extends JFrame {
 
            
         JLabel Frios = new JLabel("Frios: ");
-        Pega_Frios.setBounds(240, 165, 130, 30);
-        Frios.setBounds(180, 160, 130, 40);
+        Pega_Frios.setBounds(240, 185, 130, 30);
+        Frios.setBounds(180, 180, 130, 40);
         Pega_Frios.setFont(fonte);
         Frios.setFont(fonte);
         add(Pega_Frios);
@@ -57,8 +57,8 @@ public class Cadastro_Alimentos_Frios extends JFrame {
         
         
         JLabel Fornecedor = new JLabel("Fornecedor:");
-        Pega_Nome_Fornecedor.setBounds(270, 245, 210, 30);
-        Fornecedor.setBounds(180, 240, 130, 40);
+        Pega_Nome_Fornecedor.setBounds(270, 265, 210, 30);
+        Fornecedor.setBounds(180, 260, 130, 40);
         Pega_Nome_Fornecedor.setFont(fonte);
         Fornecedor.setFont(fonte);
         add(Pega_Nome_Fornecedor);
