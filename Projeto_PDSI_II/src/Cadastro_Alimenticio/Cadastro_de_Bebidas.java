@@ -134,7 +134,7 @@ public class Cadastro_de_Bebidas extends JFrame implements ActionListener {
 
         Voltar.setBorder(new Borda_Redonda(7));
         Voltar.setBounds(130, 430, 160, 40);
-        Adicionar.addActionListener(this);
+        Voltar.addActionListener(this);
         Voltar.setFont(fonte);
         add(Voltar);
 
@@ -144,7 +144,7 @@ public class Cadastro_de_Bebidas extends JFrame implements ActionListener {
         Adicionar.setFont(fonte);
         add(Adicionar);
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         add(new BG_CadAlimentos_Bebida());
         setBackground(Color.black);
@@ -187,9 +187,11 @@ public class Cadastro_de_Bebidas extends JFrame implements ActionListener {
 
             }
 
-        }
+        }if (e.getSource() == Voltar) {
 
-    }
+            dispose();
+        }
+        }
  
     public void ArmazenaDados() throws SQLException{
 
