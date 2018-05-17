@@ -53,7 +53,7 @@ public class Cadastro_Alimentos_Frios extends JFrame implements ActionListener {
 
            
         JLabel Frios = new JLabel("Frios: ");
-        Pega_Frios.setBounds(240, 185, 210, 30);
+        Pega_Frios.setBounds(230, 185, 210, 30);
         Frios.setBounds(180, 180, 130, 40);
         Pega_Frios.setFont(fonte);
         Pega_Frios.setEnabled(true);
@@ -73,7 +73,7 @@ public class Cadastro_Alimentos_Frios extends JFrame implements ActionListener {
         
         
         JLabel Fornecedor = new JLabel("Fornecedor:");
-        Pega_Nome_Fornecedor.setBounds(270, 265, 210, 30);
+        Pega_Nome_Fornecedor.setBounds(275, 265, 210, 30);
         Fornecedor.setBounds(180, 260, 130, 40);
         Pega_Nome_Fornecedor.setFont(fonte);
         Fornecedor.setFont(fonte);
@@ -84,8 +84,8 @@ public class Cadastro_Alimentos_Frios extends JFrame implements ActionListener {
                 
                 
         JLabel Quantidade = new JLabel("Quantidade(KG):");
-        Pega_QuantidadeKG.setBounds(775, 165, 100, 30);
-        Quantidade.setBounds(650, 160, 130, 40);
+        Pega_QuantidadeKG.setBounds(620, 195, 100, 30);
+        Quantidade.setBounds(610, 160, 130, 40);
         Pega_QuantidadeKG.setFont(fonte);
         Quantidade.setFont(fonte);
         add(Pega_QuantidadeKG);
@@ -94,17 +94,28 @@ public class Cadastro_Alimentos_Frios extends JFrame implements ActionListener {
        
     
         JLabel UKG = new JLabel("Preço por Kg:");
-        Pega_Preco.setBounds(780, 215, 100, 30);
-        UKG.setBounds(650, 210, 130, 40);
+        Pega_Preco.setBounds(820, 195, 100, 30);
+        UKG.setBounds(820, 160, 130, 40);
         Pega_Preco.setFont(fonte);
         UKG.setFont(fonte);
         add(Pega_Preco);
         add(UKG);
+        
+        
+        
+        JLabel UP = new JLabel("Quant. por porção:");
+        Pega_Unidade_porcao.setBounds(625, 275, 100, 30);
+        UP.setBounds(610, 240, 160, 40);
+        Pega_Unidade_porcao.setFont(fonte);
+        UP.setFont(fonte);
+        add(Pega_Unidade_porcao);
+        add(UP);
+        
          
         JLabel PT = new JLabel("Total Compra:");
-        Pega_PT.setBounds(790, 315, 100, 30);
-        Pega_PT.setEditable(false);
-        PT.setBounds(650, 310, 100, 40);
+        Pega_PT.setBounds(820, 275, 100, 30);
+        PT.setBounds(820, 240, 100, 40);
+        Pega_PT.setEditable(false);   
         Pega_PT.setFont(fonte);
         PT.setFont(fonte);
         add(Pega_PT);
@@ -112,13 +123,7 @@ public class Cadastro_Alimentos_Frios extends JFrame implements ActionListener {
                 
                 
                 
-        JLabel UP = new JLabel("Quant. por porção:");
-        Pega_Unidade_porcao.setBounds(783, 265, 100, 30);
-        UP.setBounds(650, 260, 160, 40);
-        Pega_Unidade_porcao.setFont(fonte);
-        UP.setFont(fonte);
-        add(Pega_Unidade_porcao);
-        add(UP);
+        
         
         
         
@@ -137,6 +142,7 @@ public class Cadastro_Alimentos_Frios extends JFrame implements ActionListener {
 
   
         
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         add(new BG_CadAlimentos_Frios());
         setBackground(Color.black);
