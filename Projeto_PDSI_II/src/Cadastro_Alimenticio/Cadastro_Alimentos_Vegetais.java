@@ -47,11 +47,11 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
     public Cadastro_Alimentos_Vegetais() {
         
         
-        Font fonte = new Font("SansSerif", Font.BOLD, 14);
+        Font fonte = new Font("SansSerif", Font.BOLD, 15);
 
            
         JLabel Vegetais = new JLabel("Vegetais: ");
-        Pega_Vegetais.setBounds(250, 185, 130, 30);
+        Pega_Vegetais.setBounds(255, 185, 130, 30);
         Vegetais.setBounds(180, 180, 130, 40);
         Pega_Vegetais.setFont(fonte);
         Vegetais.setFont(fonte);
@@ -66,7 +66,7 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
         
         
         JLabel Fornecedor = new JLabel("Fornecedor:");
-        Pega_Nome_Fornecedor.setBounds(270, 265, 210, 30);
+        Pega_Nome_Fornecedor.setBounds(275, 265, 210, 30);
         Fornecedor.setBounds(180, 260, 130, 40);
         Pega_Nome_Fornecedor.setFont(fonte);
         Fornecedor.setFont(fonte);
@@ -77,7 +77,7 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
                 
                 
         JLabel Quantidade = new JLabel("Quantidade(KG):");
-        Pega_QuantidadeKG.setBounds(770, 165, 100, 30);
+        Pega_QuantidadeKG.setBounds(775, 165, 100, 30);
         Quantidade.setBounds(650, 160, 130, 40);
         Pega_QuantidadeKG.setFont(fonte);
         Quantidade.setFont(fonte);
@@ -86,9 +86,9 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
         
        
     
-        JLabel UKG = new JLabel("Quant. por porção:");
-        Pega_QuantsPocKG.setBounds(775, 215, 100, 30);
-        UKG.setBounds(650, 210, 130, 40);
+        JLabel UKG = new JLabel("Quant. por Porção:");
+        Pega_QuantsPocKG.setBounds(790, 225, 100, 30);
+        UKG.setBounds(650, 220, 160, 40);
         Pega_QuantsPocKG.setFont(fonte);
         UKG.setFont(fonte);
         add(Pega_QuantsPocKG);
@@ -96,9 +96,9 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
                 
                 
                 
-        JLabel UP = new JLabel("Preço por Kg");
-        Pega_Preco.setBounds(805, 265, 100, 30);
-        UP.setBounds(650, 260, 160, 40);
+        JLabel UP = new JLabel("Preço por Kg:");
+        Pega_Preco.setBounds(755, 285, 100, 30);
+        UP.setBounds(650, 280, 160, 40);
         Pega_Preco.setFont(fonte);
         UP.setFont(fonte);
         add(Pega_Preco);
@@ -121,6 +121,7 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
 
   
         
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         add(new BG_CadAlimentos_Vegetais());
         setBackground(Color.black);
@@ -149,10 +150,10 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
         if (e.getSource() == Adicionar) {
             
             try {
-                 preenche();
+                 
+                preenche();
                 ArmazenaDados();
-                
-                
+                              
             } catch (SQLException ex) {
 
             }
@@ -199,15 +200,10 @@ public class Cadastro_Alimentos_Vegetais extends JFrame implements ActionListene
         Pega_QuantidadeKG.setText("");
         Pega_Preco.setText("");
         Pega_QuantsPocKG.setText("");
-     
-        
+           
         
     }
-
-
-    
-    
-    
+ 
     public static void main(String [] args){
         
         new Cadastro_Alimentos_Vegetais();
