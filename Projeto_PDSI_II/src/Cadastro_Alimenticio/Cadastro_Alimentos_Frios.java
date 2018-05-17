@@ -49,7 +49,7 @@ public class Cadastro_Alimentos_Frios extends JFrame implements ActionListener {
     public Cadastro_Alimentos_Frios() {
         
         
-        Font fonte = new Font("SansSerif", Font.BOLD, 14);
+        Font fonte = new Font("SansSerif", Font.BOLD, 15);
 
            
         JLabel Frios = new JLabel("Frios: ");

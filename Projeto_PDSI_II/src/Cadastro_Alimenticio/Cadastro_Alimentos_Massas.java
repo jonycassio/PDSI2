@@ -46,11 +46,11 @@ public class Cadastro_Alimentos_Massas extends JFrame implements ActionListener 
     public Cadastro_Alimentos_Massas() {
         
         
-        Font fonte = new Font("SansSerif", Font.BOLD, 14);
+        Font fonte = new Font("SansSerif", Font.BOLD, 15);
 
            
         JLabel Massas = new JLabel("Massas: ");
-        Pega_Massas.setBounds(250, 185, 130, 30);
+        Pega_Massas.setBounds(245, 185, 130, 30);
         Massas.setBounds(180, 180, 130, 40);
         Pega_Massas.setFont(fonte);
         Massas.setFont(fonte);
@@ -66,7 +66,7 @@ public class Cadastro_Alimentos_Massas extends JFrame implements ActionListener 
         
         
         JLabel Fornecedor = new JLabel("Fornecedor:");
-        Pega_Nome_Fornecedor.setBounds(270, 265, 210, 30);
+        Pega_Nome_Fornecedor.setBounds(275, 265, 210, 30);
         Fornecedor.setBounds(180, 260, 130, 40);
         Pega_Nome_Fornecedor.setFont(fonte);
         Fornecedor.setFont(fonte);
@@ -75,8 +75,8 @@ public class Cadastro_Alimentos_Massas extends JFrame implements ActionListener 
                 
         
         JLabel UP = new JLabel("Unidades:");
-        Pega_Quantidade.setBounds(695, 185, 100, 30);
-        UP.setBounds(620, 180, 160, 40);
+        Pega_Quantidade.setBounds(735, 185, 100, 30);
+        UP.setBounds(655, 180, 160, 40);
         Pega_Quantidade.setFont(fonte);
         UP.setFont(fonte);
         add(Pega_Quantidade);
@@ -86,8 +86,8 @@ public class Cadastro_Alimentos_Massas extends JFrame implements ActionListener 
         
         
         JLabel UP1 = new JLabel("Uni. por porção:");
-        Pega_Unidade_porcao.setBounds(730, 265, 100, 30);
-        UP1.setBounds(620, 260, 160, 40);
+        Pega_Unidade_porcao.setBounds(780, 265, 100, 30);
+        UP1.setBounds(655, 260, 160, 40);
         Pega_Unidade_porcao.setFont(fonte);
         UP1.setFont(fonte);
         add(Pega_Unidade_porcao);
