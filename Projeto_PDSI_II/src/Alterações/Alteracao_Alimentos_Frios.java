@@ -2,7 +2,6 @@
 package Alterações;
 
 import Backgrounds.BG_Alteracao;
-import Backgrounds.BG_CadAlimentos_Frios;
 import Banco_de_Dados.DAO;
 import Botoes.Borda_Redonda;
 import java.awt.Color;
