@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projeto_pdsi_ii;
 
 import Backgrounds.BG_Principal;
@@ -18,10 +14,7 @@ import Cadastros.*;
 import Listagem.*;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author Jonycássio
- */
+
 public class Principal extends JFrame implements ActionListener{
     
     
